@@ -1,0 +1,17 @@
+Technical Docuementation for Backend Technical Test (part 2)
+
+Main used packages
+1.Sequelize - ORM for nodejs 
+2.Database - Sqlite (Memory Database for easier implemenation follows same set of operations like MySQL/Postgres) 
+3.Express - Framework for nodejs
+4.Joi - For Schema validation
+5.Jest - For Unit testing
+6.eslint - For linting
+7.node-cache - For caching(memory caching)
+8.jsonwebtoken - For token based Authorization
+9.SonarQube - For code quality,smells and bugs
+
+Third Party APIs used
+1.OpenWeatherAPI - For fetching weather report for next 7-8 consecutive days, the result gets cached after first response and thus improves the api response time after first attempt.API doesn't requires authentication.
+
+2.OpenNewsAPI - For fetching news report with an optional seach parameter, similar to the above the result gets cached and improves the response from the second call. The Api requies authentication i.e via Authorization Token
