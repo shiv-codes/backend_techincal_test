@@ -32,3 +32,9 @@ Application Server - npm start
 ```
 Automated Test - npm run test
 ```
+
+### API DOCUMENTATION
+
+```
+Postman Link - https://www.getpostman.com/collections/4d66f5fd4440bd782aaf
+```
