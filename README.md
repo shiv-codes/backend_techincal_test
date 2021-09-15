@@ -29,4 +29,6 @@ npm install
 Application Server - npm start
 ```
 
+```
 Automated Test - npm run test
+```
