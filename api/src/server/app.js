@@ -11,7 +11,7 @@ const app = express();
 
 app.get('/health', (req, res) => res.sendStatus(200));
 
-app.use(cors());
+app.use(cors({ origin: ["http://localhost.com"] }));
 
 app.use(helmet());
 app.use(bodyParser.json());

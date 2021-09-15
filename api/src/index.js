@@ -5,7 +5,7 @@ const start = async () => {
     const config = require('../src/config/env-config')
 
     try {
-        await config.configureENV();
+        config.configureENV();
         await db.connect();
         await server.start();
         console.info('[APP] - Application started. 🚀');

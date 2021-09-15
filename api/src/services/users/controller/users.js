@@ -2,8 +2,7 @@ const models = require('../models');
 
 const createUser = async (userDetails) => {
     try {
-        const createdUser = await models.Users.create(userDetails)
-        return createdUser.toJSON()
+        return await models.Users.create(userDetails)
     } catch (error) {
         return new Error(error.message)
     }
@@ -11,12 +10,10 @@ const createUser = async (userDetails) => {
 
 const getUserDetails = async (userDetails) => {
     try {
-        const userDetail = await models.Users.findOne({
+        return await models.Users.findOne({
             attributes: ['id', 'email', 'name', 'password'],
             where: userDetails
         })
-        const parsedDetails = await userDetail.toJSON()
-        return parsedDetails
     } catch (error) {
         return new Error(error.message)
     }
@@ -24,8 +21,7 @@ const getUserDetails = async (userDetails) => {
 
 const logoutUser = async (condition) => {
     try {
-        const sessionToken = await models.SessionTokens.destroy({ where: condition, force: true })
-        return sessionToken
+        return await models.SessionTokens.destroy({ where: condition, force: true })
     } catch (error) {
         return new Error(error.message)
     }
