@@ -8,6 +8,6 @@ route.post('/signup', validate.userSignup, users.post);
 
 route.post('/login', validate.userLogin, users.index);
 
-route.put('/logout', authHandler, users.logout);
+route.delete('/logout', authHandler, users.logout);
 
 module.exports = route;

@@ -3,8 +3,8 @@ const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const cors = require('cors');
 
-// const newsRoutes = require('../services/news/routes');
-// const weatherRoutes = require('../services/weather/routes');
+const newsRoutes = require('../services/news/routes');
+const weatherRoutes = require('../services/weather/routes');
 const userRoutes = require('../services/users/routes');
 
 const app = express();
@@ -16,8 +16,8 @@ app.use(cors());
 app.use(helmet());
 app.use(bodyParser.json());
 
-// app.use(weatherRoutes);
-// app.use(newsRoutes);
+app.use(weatherRoutes);
+app.use(newsRoutes);
 app.use(userRoutes);
 
 app.get('*', (req, res, next) => {

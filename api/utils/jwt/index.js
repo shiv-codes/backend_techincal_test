@@ -3,7 +3,7 @@ const secretKey = process.env.JWT_SECRET
 
 const generateJWT = (payLoad) => {
     return new Promise((resolve, reject) => {
-        jwt.sign(payLoad, secretKey, { expiresIn: payLoad.expiresIn }, (error, token) => {
+        jwt.sign(payLoad, secretKey, { expiresIn: payLoad.expiresIn ? payLoad.expiresIn : '8h' }, (error, token) => {
             if (error) {
                 reject(error)
             }
@@ -16,17 +16,13 @@ const generateJWT = (payLoad) => {
 
 const verifyJWT = (token) => {
     return new Promise((resolve, reject) => {
-        jwt.verify(token, secretkey, function (error, decoded) {
+        jwt.verify(token, secretKey, function (error, decoded) {
             if (error) {
+                console.log("verifyJWT -> error", error)
                 reject(error)
             }
             else {
-                const data = {
-                    profileId: decoded.profileId,
-                    accessToken: token,
-                    profileType: decoded.profileType
-                }
-                resolve(data)
+                resolve()
             }
         })
     })

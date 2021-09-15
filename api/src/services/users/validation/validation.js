@@ -8,7 +8,7 @@ const userLogin = (req, res, next) => {
     } else {
         const { details } = error;
         const message = details.map(i => i.message).join(',');
-        //send response 501
+        res.send(message)
     }
 }
 

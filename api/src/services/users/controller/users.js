@@ -12,22 +12,22 @@ const createUser = async (userDetails) => {
 const getUserDetails = async (userDetails) => {
     try {
         const userDetail = await models.Users.findOne({
-            attributes: ['id', 'email', 'name'],
+            attributes: ['id', 'email', 'name', 'password'],
             where: userDetails
         })
-        return userDetail
+        const parsedDetails = await userDetail.toJSON()
+        return parsedDetails
     } catch (error) {
-        console.log("getUserDetails -> error", error)
+        return new Error(error.message)
     }
 };
 
-const logoutUser = async () => {
+const logoutUser = async (condition) => {
     try {
-        models.SessionTokens.destroy({})
-            .then()
-            .catch()
+        const sessionToken = await models.SessionTokens.destroy({ where: condition, force: true })
+        return sessionToken
     } catch (error) {
-
+        return new Error(error.message)
     }
 };
 

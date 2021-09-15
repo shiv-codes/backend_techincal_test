@@ -1,5 +1,5 @@
-const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = new Sequelize('sqlite::memory:');
+const { DataTypes } = require('sequelize');
+const { sequelize } = require('../../../db/index')
 
 const SessionTokens = sequelize.define('SessionTokens', {
     id: {
@@ -20,5 +20,7 @@ const SessionTokens = sequelize.define('SessionTokens', {
     freezeTableName: true,
     timestamps: true
 });
+
+SessionTokens.sync();
 
 module.exports = SessionTokens;

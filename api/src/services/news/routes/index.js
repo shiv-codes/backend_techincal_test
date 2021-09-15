@@ -1,13 +1,9 @@
 const express = require('express');
-
-// const { withAuth } = require('../../../server/middleware/auth');
-// const sanitise = require('../../../server/middleware/sanitise');
-// const validate = require('../../../server/middleware/validate');
-
 const router = express.Router();
 
-router.get('/news', () => {
+const { authHandler } = require('../../../server/middleware/auth');
+const { fetchNews } = require('./newsReport');
 
-})
+router.get('/news', authHandler, fetchNews);
 
 module.exports = router
