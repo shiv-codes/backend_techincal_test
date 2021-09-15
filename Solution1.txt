@@ -1,0 +1,23 @@
+Task 1
+You are a developer who accidentally went back in time. You can’t return back to your timeline because your time machine needs to sort an array from 10 Gigabytes of unsorted integer data. The problem in front of you is Machine during that time was not that advanced. You find a device with 1 gig of ram and 240 Gigabytes of the hard drive.
+
+Logic
+
+The Solution to the above problem can be achieved by external sorting using npm EventStream.
+
+1.If only N integers can be loaded into memory at any given time, but the total number of integers (T) i.e present in our large file is such that T > N so we have to follow a strategy of sorting chunks of integers and then merging those chunks.
+
+2.Analyze the input file to determine how many lines there are, which will tell us how many integers there are (T)
+
+3.Read through the input file, reading chunks of N integers into memory and sort each chunk of integers in memory and write each chunk to an intermediate file, which will result in F intermediate files, where F * N <= T. The last chunk will likely be smaller than N unless T % N === 0. This first batch of files will be referred to as type 1 files.
+
+4.We'll open up to P files at a time, where P will probably be 10. Each file contains a chunk of sorted integers, so we'll have P pointers to the integers at the beginning of the file.
+
+5.We'll find the min value in that set of P integers, and write that to an intermediate output file. Then we'll take the file pointer where the min value originated from and advance that file pointer to the next integer. We'll repeat this until all P file pointers have advanced to the end of the file.
+
+6.Repeat Steps 4 and 5 until all F output files have been processed. The resulting sorted files will be referred to as type 2 files.
+
+7.At this point, we may only have one type 2 file, in which case we are be finished, but if F > P, we'll have multiple type 2 files where the size of each file is P * N integers. In that case, repeat Steps 4 - 6 until all we only produce a single output file .
+
+
+The basic idea is to divide the larger file into smaller temporary files, sort the temporary files and then creating a new file using these temporary files

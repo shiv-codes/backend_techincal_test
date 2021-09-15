@@ -1,0 +1,1 @@
+module.exports.SessionTokens = require('../models/sessiontoken');
