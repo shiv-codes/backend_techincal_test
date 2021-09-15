@@ -11,7 +11,7 @@ const authHandler = async (req, res, next) => {
         if (!tokenDetails) {
             return res.status(401).send('Unauthorized access')//send error response
         }
-        const parsedToken = await tokenDetails.toJSON();
+        const parsedToken = tokenDetails.toJSON();
         req.data = {
             userId: parsedToken.userId,
             accessToken: parsedToken.accessToken
@@ -27,7 +27,7 @@ const authSetup = async (payload) => {
         try {
             const generatedToken = await generateJWT(payload)
             const tokenDetails = await models.SessionTokens.create({ userId: payload.userId, accessToken: generatedToken })
-            const parsedToken = await tokenDetails.toJSON()
+            const parsedToken = tokenDetails.toJSON()
             resolve(parsedToken)
         } catch (error) {
             reject(error)
@@ -41,7 +41,7 @@ const adminAuthHandler = () => {
             const payload = { userId: 0 }
             const generatedToken = await generateJWT(payload)
             const tokenDetails = await models.SessionTokens.create({ userId: payload.userId, accessToken: generatedToken })
-            const parsedToken = await tokenDetails.toJSON()
+            const parsedToken = tokenDetails.toJSON()
             resolve(parsedToken)
         } catch (error) {
             reject(error)

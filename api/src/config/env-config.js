@@ -22,7 +22,6 @@ const configureENV = () => {
             process.exit(1)
         }
         console.log('ENV variables verified successfully');
-        return
     });
 }
 
